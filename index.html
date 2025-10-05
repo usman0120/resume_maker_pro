@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Maker Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+        }
+        .resume-paper {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 10px;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-icon {
+            transition: transform 0.2s ease;
+        }
+        .section-icon:hover {
+            transform: scale(1.1);
+        }
+        .skill-tag {
+            transition: all 0.2s ease;
+        }
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .mobile-stack {
+                display: flex;
+                flex-direction: column;
+            }
+            .mobile-preview {
+                width: 100%;
+                overflow-x: auto;
+                transform: scale(0.9);
+                transform-origin: top left;
+                margin-top: 1rem;
+            }
+            .form-container {
+                padding: 1rem;
+            }
+            .header-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        .faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex flex-col">
+        <!-- Gradient Header -->
+        <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 shadow-lg">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <h1 class="text-3xl font-bold header-text">
+                        <i class="fas fa-file-alt mr-3"></i>Resume Maker Pro
+                    </h1>
+                    <p class="mt-2 md:mt-0 text-indigo-100">
+                        Create professional resumes in minutes
+                    </p>
+                </div>
+            </div>
+        </header>
+<!-- Features Section -->
+<section class="bg-white py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose Resume Maker Pro?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center p-6 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-shield-alt text-indigo-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Your Data is Secure</h3>
+        <p class="text-gray-600">All processing happens locally in your browser. No data is sent to any server.</p>
+      </div>
+      
+      <div class="text-center p-6 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-bolt text-indigo-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
+        <p class="text-gray-600">Create professional resumes in minutes with our intuitive interface.</p>
+      </div>
+      
+      <div class="text-center p-6 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-file-pdf text-indigo-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Professional PDFs</h3>
+        <p class="text-gray-600">Download your resume as a high-quality PDF ready for job applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Section -->
+<section class="bg-gradient-to-r from-indigo-50 to-purple-50 py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Trusted by Job Seekers Worldwide</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl font-bold text-indigo-600 mb-2">10K+</div>
+        <p class="text-gray-600">Resumes Created</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl font-bold text-indigo-600 mb-2">95%</div>
+        <p class="text-gray-600">User Satisfaction</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl font-bold text-indigo-600 mb-2">100%</div>
+        <p class="text-gray-600">Privacy Guaranteed</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="text-3xl font-bold text-indigo-600 mb-2">24/7</div>
+        <p class="text-gray-600">Free Access</p>
+      </div>
+    </div>
+    
+    <!-- Privacy Assurance -->
+    <div class="mt-12 bg-white rounded-xl p-8 max-w-4xl mx-auto shadow-sm">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+          <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center">
+            <i class="fas fa-lock text-green-600 text-3xl"></i>
+          </div>
+        </div>
+        <div class="md:w-3/4">
+          <h3 class="text-2xl font-bold mb-4 text-gray-800">Your Privacy Matters</h3>
+          <p class="text-gray-600 mb-4">
+            Resume Maker Pro operates entirely in your browser. Your personal information, work history, and resume data never leave your device. We don't use servers, databases, or tracking systems.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">No Registration Required</span>
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">No Data Storage</span>
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Completely Free</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- How It Works Section -->
+<section class="bg-white py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">How It Works</h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center mb-12">
+        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+          <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center">
+            <span class="text-indigo-600 font-bold text-xl">1</span>
+          </div>
+        </div>
+        <div class="md:w-3/4">
+          <h3 class="text-xl font-bold mb-2 text-gray-800">Fill in Your Details</h3>
+          <p class="text-gray-600">Enter your personal information, education, work experience, skills, and more using our intuitive form.</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row items-center mb-12">
+        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+          <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center">
+            <span class="text-indigo-600 font-bold text-xl">2</span>
+          </div>
+        </div>
+        <div class="md:w-3/4">
+          <h3 class="text-xl font-bold mb-2 text-gray-800">Preview in Real-Time</h3>
+          <p class="text-gray-600">Watch your resume take shape instantly with our live preview feature. Make adjustments as needed.</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
+          <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center">
+            <span class="text-indigo-600 font-bold text-xl">3</span>
+          </div>
+        </div>
+        <div class="md:w-3/4">
+          <h3 class="text-xl font-bold mb-2 text-gray-800">Download & Apply</h3>
+          <p class="text-gray-600">Download your professional resume as a PDF and start applying for your dream job!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <main class="flex-grow container mx-auto px-4 py-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mobile-stack">
+                <!-- Form Section -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden form-container h-full">
+                    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 border-b border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                            <i class="fas fa-edit mr-3 text-indigo-600"></i>Your Information
+                        </h2>
+                    </div>
+                    
+                    <form id="resume-form" class="space-y-6 p-6 h-full flex flex-col">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="full-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name*</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                    </div>
+                                    <input type="text" id="full-name" required class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="job-title" class="block text-sm font-medium text-gray-700 mb-1">Professional Title*</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-briefcase text-gray-400"></i>
+                                    </div>
+                                    <input type="text" id="job-title" required class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-envelope text-gray-400"></i>
+                                    </div>
+                                    <input type="email" id="email" required class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone*</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-phone text-gray-400"></i>
+                                    </div>
+                                    <input type="tel" id="phone" required class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-map-marker-alt text-gray-400"></i>
+                                </div>
+                                <input type="text" id="address" class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="linkedin" class="block text-sm font-medium text-gray-700 mb-1">LinkedIn</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fab fa-linkedin text-gray-400"></i>
+                                    </div>
+                                    <input type="url" id="linkedin" class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="portfolio" class="block text-sm font-medium text-gray-700 mb-1">Portfolio/GitHub</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-globe text-gray-400"></i>
+                                    </div>
+                                    <input type="url" id="portfolio" class="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="summary" class="block text-sm font-medium text-gray-700 mb-1">Professional Summary</label>
+                            <textarea id="summary" rows="3" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border"></textarea>
+                        </div>
+
+                        <!-- Education Section -->
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-graduation-cap mr-2 section-icon text-indigo-600"></i>Education
+                                </h2>
+                                <button type="button" id="add-education" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center">
+                                    <i class="fas fa-plus mr-2"></i>Add Education
+                                </button>
+                            </div>
+                            <div id="education-container" class="space-y-4">
+                                <!-- Education entries will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- Experience Section -->
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-briefcase mr-2 section-icon text-indigo-600"></i>Work Experience
+                                </h2>
+                                <button type="button" id="add-experience" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center">
+                                    <i class="fas fa-plus mr-2"></i>Add Experience
+                                </button>
+                            </div>
+                            <div id="experience-container" class="space-y-4">
+                                <!-- Experience entries will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- Skills Section -->
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-tools mr-2 section-icon text-indigo-600"></i>Skills
+                                </h2>
+                                <button type="button" id="add-skill" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center">
+                                    <i class="fas fa-plus mr-2"></i>Add Skill
+                                </button>
+                            </div>
+                            <div id="skills-container" class="space-y-2">
+                                <!-- Skills will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- Projects Section -->
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-project-diagram mr-2 section-icon text-indigo-600"></i>Projects
+                                </h2>
+                                <button type="button" id="add-project" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center">
+                                    <i class="fas fa-plus mr-2"></i>Add Project
+                                </button>
+                            </div>
+                            <div id="projects-container" class="space-y-4">
+                                <!-- Projects will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- Certifications Section -->
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-certificate mr-2 section-icon text-indigo-600"></i>Certifications
+                                </h2>
+                                <button type="button" id="add-certification" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center">
+                                    <i class="fas fa-plus mr-2"></i>Add Certification
+                                </button>
+                            </div>
+                            <div id="certifications-container" class="space-y-4">
+                                <!-- Certifications will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- Languages Section -->
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-semibold text-gray-800">
+                                    <i class="fas fa-language mr-2 section-icon text-indigo-600"></i>Languages
+                                </h2>
+                                <button type="button" id="add-language" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center">
+                                    <i class="fas fa-plus mr-2"></i>Add Language
+                                </button>
+                            </div>
+                            <div id="languages-container" class="space-y-4">
+                                <!-- Languages will be added here -->
+                            </div>
+                        </div>
+
+                        <div class="pt-6 mt-auto">
+                            <div class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                                <button type="button" id="reset-form" class="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center">
+                                    <i class="fas fa-redo mr-2"></i>Reset
+                                </button>
+                                <button type="button" id="preview-resume" class="px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+                                    <i class="fas fa-eye mr-2"></i>Preview
+                                </button>
+                                <button type="button" id="download-resume" class="px-5 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center">
+                                    <i class="fas fa-download mr-2"></i>Download PDF
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Resume Preview Section -->
+                <div class="bg-white rounded-xl shadow-md overflow-auto mobile-preview h-full">
+                    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 border-b border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                            <i class="fas fa-file-alt mr-3 text-indigo-600"></i>Resume Preview
+                        </h2>
+                    </div>
+                    <div id="resume-preview" class="resume-paper bg-white p-8 text-gray-800" style="width: 210mm; min-height: 297mm;">
+                        <div id="preview-content" class="space-y-6">
+                            <div class="text-center">
+                                <h1 id="preview-name" class="text-3xl font-bold mb-1">Your Name</h1>
+                                <h2 id="preview-title" class="text-xl text-gray-600 mb-2">Professional Title</h2>
+                                <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                                    <span id="preview-phone"><i class="fas fa-phone mr-1"></i>Phone</span>
+                                    <span id="preview-email"><i class="fas fa-envelope mr-1"></i>Email</span>
+                                    <span id="preview-address" class="hidden"><i class="fas fa-map-marker-alt mr-1"></i>Address</span>
+                                    <span id="preview-linkedin" class="hidden"><i class="fab fa-linkedin mr-1"></i>LinkedIn</span>
+                                    <span id="preview-portfolio" class="hidden"><i class="fas fa-globe mr-1"></i>Portfolio</span>
+                                </div>
+                            </div>
+
+                            <div id="preview-summary" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Summary</h3>
+                                <p class="text-sm">Professional summary goes here.</p>
+                            </div>
+
+                            <div id="preview-education" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Education</h3>
+                                <div id="preview-education-entries"></div>
+                            </div>
+
+                            <div id="preview-experience" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Work Experience</h3>
+                                <div id="preview-experience-entries"></div>
+                            </div>
+
+                            <div id="preview-skills" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Skills</h3>
+                                <div id="preview-skills-list" class="flex flex-wrap gap-2"></div>
+                            </div>
+
+                            <div id="preview-projects" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Projects</h3>
+                                <div id="preview-projects-entries"></div>
+                            </div>
+
+                            <div id="preview-certifications" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Certifications</h3>
+                                <div id="preview-certifications-entries"></div>
+                            </div>
+
+                            <div id="preview-languages" class="hidden">
+                                <h3 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-2">Languages</h3>
+                                <div id="preview-languages-list" class="flex flex-wrap gap-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+<!-- FAQs Section -->
+<section class="bg-gradient-to-r from-indigo-50 to-purple-50 py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 flex justify-between items-center">
+          <span>Is Resume Maker Pro really free?</span>
+          <i class="fas fa-chevron-down text-indigo-600 transition-transform"></i>
+        </button>
+        <div class="faq-answer p-6 border-t border-gray-100 hidden">
+          <p class="text-gray-600">Yes, absolutely! Resume Maker Pro is completely free to use with no hidden costs or premium features. We believe everyone should have access to professional resume-building tools.</p>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 flex justify-between items-center">
+          <span>Is my data safe and private?</span>
+          <i class="fas fa-chevron-down text-indigo-600 transition-transform"></i>
+        </button>
+        <div class="faq-answer p-6 border-t border-gray-100 hidden">
+          <p class="text-gray-600">Your privacy is our top priority. All your information stays on your device - we don't store any data on servers. The resume generation happens entirely in your browser, so your personal information never leaves your computer.</p>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 flex justify-between items-center">
+          <span>What format will my resume be in?</span>
+          <i class="fas fa-chevron-down text-indigo-600 transition-transform"></i>
+        </button>
+        <div class="faq-answer p-6 border-t border-gray-100 hidden">
+          <p class="text-gray-600">Your resume will be generated as a high-quality PDF file, which is the standard format expected by most employers and applicant tracking systems.</p>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 flex justify-between items-center">
+          <span>Can I edit my resume after downloading?</span>
+          <i class="fas fa-chevron-down text-indigo-600 transition-transform"></i>
+        </button>
+        <div class="faq-answer p-6 border-t border-gray-100 hidden">
+          <p class="text-gray-600">Yes! Simply return to Resume Maker Pro and your information will still be in the form (as long as you haven't cleared your browser data). You can make changes and generate an updated resume anytime.</p>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 flex justify-between items-center">
+          <span>Do I need to create an account?</span>
+          <i class="fas fa-chevron-down text-indigo-600 transition-transform"></i>
+        </button>
+        <div class="faq-answer p-6 border-t border-gray-100 hidden">
+          <p class="text-gray-600">No account creation is required! Resume Maker Pro works entirely in your browser without any registration process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16 text-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to Create Your Professional Resume?</h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of successful job seekers who landed their dream jobs with Resume Maker Pro.</p>
+    <a href="#resume-form" class="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors shadow-lg">
+      Get Started Now <i class="fas fa-arrow-right ml-2"></i>
+    </a>
+  </div>
+</section>
+<h3 class="text-gray-600 text-center justify-between m-2">Made with ❤️ for job seekers worldwide
+</h3>
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white p-4 mt-auto">
+            <div class="container mx-auto text-center">
+                <p>© 2025 Resume Maker Pro. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Fullscreen Preview Modal -->
+    <div id="fullscreen-preview" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-4xl max-h-screen overflow-auto rounded-xl">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h2 class="text-2xl font-bold text-gray-800">Fullscreen Preview</h2>
+                <button id="close-preview" class="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="fullscreen-preview-content" class="p-8">
+                <!-- Content will be copied here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the JS PDF library
+        const { jsPDF } = window.jspdf;
+
+        // DOM Elements
+        const resumeForm = document.getElementById('resume-form');
+        const previewContent = document.getElementById('preview-content');
+        const fullscreenPreview = document.getElementById('fullscreen-preview');
+        const closePreview = document.getElementById('close-preview');
+        const togglePreview = document.getElementById('toggle-preview');
+        const downloadResume = document.getElementById('download-resume');
+        const previewResume = document.getElementById('preview-resume');
+        const resetForm = document.getElementById('reset-form');
+
+        // Form Input Listeners
+        document.getElementById('full-name').addEventListener('input', (e) => {
+            document.getElementById('preview-name').textContent = e.target.value || 'Your Name';
+        });
+
+        document.getElementById('job-title').addEventListener('input', (e) => {
+            document.getElementById('preview-title').textContent = e.target.value || 'Professional Title';
+        });
+
+        document.getElementById('email').addEventListener('input', (e) => {
+            const previewEmail = document.getElementById('preview-email');
+            if (e.target.value) {
+                previewEmail.innerHTML = `<i class="fas fa-envelope mr-1"></i>${e.target.value}`;
+                previewEmail.classList.remove('hidden');
+            } else {
+                previewEmail.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', (e) => {
+            const previewPhone = document.getElementById('preview-phone');
+            if (e.target.value) {
+                previewPhone.innerHTML = `<i class="fas fa-phone mr-1"></i>${e.target.value}`;
+            } else {
+                previewPhone.innerHTML = '<i class="fas fa-phone mr-1"></i>Phone';
+            }
+        });
+
+        document.getElementById('address').addEventListener('input', (e) => {
+            const previewAddress = document.getElementById('preview-address');
+            if (e.target.value) {
+                previewAddress.innerHTML = `<i class="fas fa-map-marker-alt mr-1"></i>${e.target.value}`;
+                previewAddress.classList.remove('hidden');
+            } else {
+                previewAddress.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('linkedin').addEventListener('input', (e) => {
+            const previewLinkedin = document.getElementById('preview-linkedin');
+            if (e.target.value) {
+                previewLinkedin.innerHTML = `<i class="fab fa-linkedin mr-1"></i>${e.target.value}`;
+                previewLinkedin.classList.remove('hidden');
+            } else {
+                previewLinkedin.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('portfolio').addEventListener('input', (e) => {
+            const previewPortfolio = document.getElementById('preview-portfolio');
+            if (e.target.value) {
+                previewPortfolio.innerHTML = `<i class="fas fa-globe mr-1"></i>${e.target.value}`;
+                previewPortfolio.classList.remove('hidden');
+            } else {
+                previewPortfolio.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('summary').addEventListener('input', (e) => {
+            const previewSummary = document.getElementById('preview-summary');
+            if (e.target.value) {
+                document.getElementById('preview-summary').querySelector('p').textContent = e.target.value;
+                previewSummary.classList.remove('hidden');
+            } else {
+                previewSummary.classList.add('hidden');
+            }
+        });
+
+        // Add Education Entry
+        document.getElementById('add-education').addEventListener('click', () => {
+            const educationContainer = document.getElementById('education-container');
+            const index = educationContainer.children.length;
+            
+            const educationEntry = document.createElement('div');
+            educationEntry.className = 'education-entry bg-gray-50 p-4 rounded-lg fade-in';
+            educationEntry.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-medium text-gray-800">Education #${index + 1}</h3>
+                    <button type="button" class="remove-education text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="school-${index}" class="block text-sm font-medium text-gray-700">School/University*</label>
+                        <input type="text" id="school-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="degree-${index}" class="block text-sm font-medium text-gray-700">Degree/Certificate*</label>
+                        <input type="text" id="degree-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                        <label for="education-start-${index}" class="block text-sm font-medium text-gray-700">Start Date*</label>
+                        <input type="month" id="education-start-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="education-end-${index}" class="block text-sm font-medium text-gray-700">End Date (or expected)</label>
+                        <input type="month" id="education-end-${index}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="education-description-${index}" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea id="education-description-${index}" rows="2" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border"></textarea>
+                </div>
+            `;
+            
+            educationContainer.appendChild(educationEntry);
+            
+            // Add event listeners for this education entry
+            const inputs = educationEntry.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', updateEducationPreview);
+            });
+            
+            // Add remove functionality
+            educationEntry.querySelector('.remove-education').addEventListener('click', () => {
+                educationEntry.classList.add('fade-out');
+                setTimeout(() => {
+                    educationContainer.removeChild(educationEntry);
+                    updateEducationPreview();
+                    renumberEducationEntries();
+                }, 300);
+            });
+            
+            // Show education section in preview
+            document.getElementById('preview-education').classList.remove('hidden');
+        });
+
+        function renumberEducationEntries() {
+            const entries = document.querySelectorAll('.education-entry');
+            entries.forEach((entry, index) => {
+                entry.querySelector('h3').textContent = `Education #${index + 1}`;
+            });
+        }
+
+        function updateEducationPreview() {
+            const previewContainer = document.getElementById('preview-education-entries');
+            previewContainer.innerHTML = '';
+            
+            const entries = document.querySelectorAll('.education-entry');
+            if (entries.length === 0) {
+                document.getElementById('preview-education').classList.add('hidden');
+                return;
+            }
+            
+            entries.forEach(entry => {
+                const index = entry.id.split('-')[1] || Array.from(entry.parentNode.children).indexOf(entry);
+                const school = entry.querySelector(`#school-${index}`)?.value || 'School/University';
+                const degree = entry.querySelector(`#degree-${index}`)?.value || 'Degree';
+                const startDate = entry.querySelector(`#education-start-${index}`)?.value || 'Start Date';
+                const endDate = entry.querySelector(`#education-end-${index}`)?.value || 'Present';
+                const description = entry.querySelector(`#education-description-${index}`)?.value;
+                
+                const formattedStart = startDate ? new Date(startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Start Date';
+                const formattedEnd = endDate ? (endDate === 'Present' ? 'Present' : new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })) : 'Present';
+                
+                const educationElement = document.createElement('div');
+                educationElement.className = 'mb-4';
+                educationElement.innerHTML = `
+                    <div class="flex justify-between">
+                        <h4 class="font-semibold">${school}</h4>
+                        <span class="text-gray-600">${formattedStart} - ${formattedEnd}</span>
+                    </div>
+                    <div class="text-gray-700">${degree}</div>
+                    ${description ? `<p class="text-sm mt-1">${description.replace(/\n/g, '<br>')}</p>` : ''}
+                `;
+                
+                previewContainer.appendChild(educationElement);
+            });
+        }
+
+        // Add Work Experience Entry
+        document.getElementById('add-experience').addEventListener('click', () => {
+            const experienceContainer = document.getElementById('experience-container');
+            const index = experienceContainer.children.length;
+            
+            const experienceEntry = document.createElement('div');
+            experienceEntry.className = 'experience-entry bg-gray-50 p-4 rounded-lg fade-in';
+            experienceEntry.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-medium text-gray-800">Experience #${index + 1}</h3>
+                    <button type="button" class="remove-experience text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="job-title-${index}" class="block text-sm font-medium text-gray-700">Job Title*</label>
+                        <input type="text" id="job-title-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="company-${index}" class="block text-sm font-medium text-gray-700">Company*</label>
+                        <input type="text" id="company-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                        <label for="experience-start-${index}" class="block text-sm font-medium text-gray-700">Start Date*</label>
+                        <input type="month" id="experience-start-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="experience-end-${index}" class="block text-sm font-medium text-gray-700">End Date (or present)</label>
+                        <input type="month" id="experience-end-${index}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="experience-description-${index}" class="block text-sm font-medium text-gray-700">Description*</label>
+                    <textarea id="experience-description-${index}" required rows="3" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border"></textarea>
+                </div>
+            `;
+            
+            experienceContainer.appendChild(experienceEntry);
+            
+            // Add event listeners for this experience entry
+            const inputs = experienceEntry.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', updateExperiencePreview);
+            });
+            
+            // Add remove functionality
+            experienceEntry.querySelector('.remove-experience').addEventListener('click', () => {
+                experienceEntry.classList.add('fade-out');
+                setTimeout(() => {
+                    experienceContainer.removeChild(experienceEntry);
+                    updateExperiencePreview();
+                    renumberExperienceEntries();
+                }, 300);
+            });
+            
+            // Show experience section in preview
+            document.getElementById('preview-experience').classList.remove('hidden');
+        });
+
+        function renumberExperienceEntries() {
+            const entries = document.querySelectorAll('.experience-entry');
+            entries.forEach((entry, index) => {
+                entry.querySelector('h3').textContent = `Experience #${index + 1}`;
+            });
+        }
+
+        function updateExperiencePreview() {
+            const previewContainer = document.getElementById('preview-experience-entries');
+            previewContainer.innerHTML = '';
+            
+            const entries = document.querySelectorAll('.experience-entry');
+            if (entries.length === 0) {
+                document.getElementById('preview-experience').classList.add('hidden');
+                return;
+            }
+            
+            entries.forEach(entry => {
+                const index = entry.id.split('-')[1] || Array.from(entry.parentNode.children).indexOf(entry);
+                const jobTitle = entry.querySelector(`#job-title-${index}`)?.value || 'Job Title';
+                const company = entry.querySelector(`#company-${index}`)?.value || 'Company';
+                const startDate = entry.querySelector(`#experience-start-${index}`)?.value || 'Start Date';
+                const endDate = entry.querySelector(`#experience-end-${index}`)?.value || 'Present';
+                const description = entry.querySelector(`#experience-description-${index}`)?.value || 'Description of responsibilities and achievements.';
+                
+                const formattedStart = startDate ? new Date(startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Start Date';
+                const formattedEnd = endDate ? (endDate === 'Present' ? 'Present' : new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })) : 'Present';
+                
+                const experienceElement = document.createElement('div');
+                experienceElement.className = 'mb-4';
+                experienceElement.innerHTML = `
+                    <div class="flex justify-between">
+                        <h4 class="font-semibold">${jobTitle}</h4>
+                        <span class="text-gray-600">${formattedStart} - ${formattedEnd}</span>
+                    </div>
+                    <div class="text-gray-700">${company}</div>
+                    <ul class="list-disc list-inside text-sm mt-1 ml-2">
+                        ${description.split('\n').filter(item => item.trim()).map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                `;
+                
+                previewContainer.appendChild(experienceElement);
+            });
+        }
+
+        // Add Skill
+        document.getElementById('add-skill').addEventListener('click', () => {
+            const skillsContainer = document.getElementById('skills-container');
+            const index = skillsContainer.children.length;
+            
+            const skillEntry = document.createElement('div');
+            skillEntry.className = 'skill-entry flex items-center gap-2 fade-in';
+            skillEntry.innerHTML = `
+                <input type="text" placeholder="Skill (e.g., JavaScript)" class="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border" style="min-width: 120px;">
+                <select class="rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="expert">Expert</option>
+                </select>
+                <button type="button" class="remove-skill text-red-500 hover:text-red-700 p-2">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            skillsContainer.appendChild(skillEntry);
+            
+            // Add event listeners for this skill entry
+            skillEntry.querySelector('input').addEventListener('input', updateSkillsPreview);
+            skillEntry.querySelector('select').addEventListener('change', updateSkillsPreview);
+            
+            // Add remove functionality
+            skillEntry.querySelector('.remove-skill').addEventListener('click', () => {
+                skillEntry.classList.add('fade-out');
+                setTimeout(() => {
+                    skillsContainer.removeChild(skillEntry);
+                    updateSkillsPreview();
+                }, 300);
+            });
+            
+            // Show skills section in preview
+            document.getElementById('preview-skills').classList.remove('hidden');
+        });
+
+        function updateSkillsPreview() {
+            const previewContainer = document.getElementById('preview-skills-list');
+            previewContainer.innerHTML = '';
+            
+            const entries = document.querySelectorAll('.skill-entry');
+            if (entries.length === 0) {
+                document.getElementById('preview-skills').classList.add('hidden');
+                return;
+            }
+            
+            entries.forEach(entry => {
+                const skill = entry.querySelector('input').value;
+                const level = entry.querySelector('select').value;
+                
+                if (skill) {
+                    const skillElement = document.createElement('div');
+                    skillElement.className = 'bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm whitespace-nowrap skill-tag';
+                    skillElement.textContent = skill;
+                    
+                    // Add level indicator (optional)
+                    if (level !== 'beginner') {
+                        skillElement.textContent += ` (${level.charAt(0).toUpperCase() + level.slice(1)})`;
+                    }
+                    
+                    previewContainer.appendChild(skillElement);
+                }
+            });
+        }
+
+        // Add Project
+        document.getElementById('add-project').addEventListener('click', () => {
+            const projectsContainer = document.getElementById('projects-container');
+            const index = projectsContainer.children.length;
+            
+            const projectEntry = document.createElement('div');
+            projectEntry.className = 'project-entry bg-gray-50 p-4 rounded-lg fade-in';
+            projectEntry.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-medium text-gray-800">Project #${index + 1}</h3>
+                    <button type="button" class="remove-project text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="project-name-${index}" class="block text-sm font-medium text-gray-700">Project Name*</label>
+                        <input type="text" id="project-name-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="project-url-${index}" class="block text-sm font-medium text-gray-700">Project URL</label>
+                        <input type="url" id="project-url-${index}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="project-description-${index}" class="block text-sm font-medium text-gray-700">Description*</label>
+                    <textarea id="project-description-${index}" required rows="3" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border"></textarea>
+                </div>
+            `;
+            
+            projectsContainer.appendChild(projectEntry);
+            
+            // Add event listeners for this project entry
+            const inputs = projectEntry.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', updateProjectsPreview);
+            });
+            
+            // Add remove functionality
+            projectEntry.querySelector('.remove-project').addEventListener('click', () => {
+                projectEntry.classList.add('fade-out');
+                setTimeout(() => {
+                    projectsContainer.removeChild(projectEntry);
+                    updateProjectsPreview();
+                    renumberProjectEntries();
+                }, 300);
+            });
+            
+            // Show projects section in preview
+            document.getElementById('preview-projects').classList.remove('hidden');
+        });
+
+        function renumberProjectEntries() {
+            const entries = document.querySelectorAll('.project-entry');
+            entries.forEach((entry, index) => {
+                entry.querySelector('h3').textContent = `Project #${index + 1}`;
+            });
+        }
+
+        function updateProjectsPreview() {
+            const previewContainer = document.getElementById('preview-projects-entries');
+            previewContainer.innerHTML = '';
+            
+            const entries = document.querySelectorAll('.project-entry');
+            if (entries.length === 0) {
+                document.getElementById('preview-projects').classList.add('hidden');
+                return;
+            }
+            
+            entries.forEach(entry => {
+                const index = entry.id.split('-')[1] || Array.from(entry.parentNode.children).indexOf(entry);
+                const name = entry.querySelector(`#project-name-${index}`)?.value || 'Project Name';
+                const url = entry.querySelector(`#project-url-${index}`)?.value;
+                const description = entry.querySelector(`#project-description-${index}`)?.value || 'Project description.';
+                
+                const projectElement = document.createElement('div');
+                projectElement.className = 'mb-4';
+                
+                let titleHtml = `<h4 class="font-semibold">${name}</h4>`;
+                if (url) {
+                    titleHtml = `<h4 class="font-semibold"><a href="${url}" target="_blank" class="text-blue-600 hover:underline">${name} <i class="fas fa-external-link-alt text-xs"></i></a></h4>`;
+                }
+                
+                projectElement.innerHTML = `
+                    ${titleHtml}
+                    <ul class="list-disc list-inside text-sm mt-1 ml-2">
+                        ${description.split('\n').filter(item => item.trim()).map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                `;
+                
+                previewContainer.appendChild(projectElement);
+            });
+        }
+
+        // Add Certification
+        document.getElementById('add-certification').addEventListener('click', () => {
+            const certificationsContainer = document.getElementById('certifications-container');
+            const index = certificationsContainer.children.length;
+            
+            const certificationEntry = document.createElement('div');
+            certificationEntry.className = 'certification-entry bg-gray-50 p-4 rounded-lg fade-in';
+            certificationEntry.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-medium text-gray-800">Certification #${index + 1}</h3>
+                    <button type="button" class="remove-certification text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="certification-name-${index}" class="block text-sm font-medium text-gray-700">Certification Name*</label>
+                        <input type="text" id="certification-name-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="certification-issuer-${index}" class="block text-sm font-medium text-gray-700">Issuing Organization*</label>
+                        <input type="text" id="certification-issuer-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                        <label for="certification-date-${index}" class="block text-sm font-medium text-gray-700">Date Earned</label>
+                        <input type="month" id="certification-date-${index}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="certification-url-${index}" class="block text-sm font-medium text-gray-700">Credential URL</label>
+                        <input type="url" id="certification-url-${index}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                </div>
+            `;
+            
+            certificationsContainer.appendChild(certificationEntry);
+            
+            // Add event listeners for this certification entry
+            const inputs = certificationEntry.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', updateCertificationsPreview);
+            });
+            
+            // Add remove functionality
+            certificationEntry.querySelector('.remove-certification').addEventListener('click', () => {
+                certificationEntry.classList.add('fade-out');
+                setTimeout(() => {
+                    certificationsContainer.removeChild(certificationEntry);
+                    updateCertificationsPreview();
+                    renumberCertificationEntries();
+                }, 300);
+            });
+            
+            // Show certifications section in preview
+            document.getElementById('preview-certifications').classList.remove('hidden');
+        });
+
+        function renumberCertificationEntries() {
+            const entries = document.querySelectorAll('.certification-entry');
+            entries.forEach((entry, index) => {
+                entry.querySelector('h3').textContent = `Certification #${index + 1}`;
+            });
+        }
+
+        function updateCertificationsPreview() {
+            const previewContainer = document.getElementById('preview-certifications-entries');
+            previewContainer.innerHTML = '';
+            
+            const entries = document.querySelectorAll('.certification-entry');
+            if (entries.length === 0) {
+                document.getElementById('preview-certifications').classList.add('hidden');
+                return;
+            }
+            
+            entries.forEach(entry => {
+                const index = entry.id.split('-')[1] || Array.from(entry.parentNode.children).indexOf(entry);
+                const name = entry.querySelector(`#certification-name-${index}`)?.value || 'Certification Name';
+                const issuer = entry.querySelector(`#certification-issuer-${index}`)?.value || 'Issuing Organization';
+                const date = entry.querySelector(`#certification-date-${index}`)?.value;
+                const url = entry.querySelector(`#certification-url-${index}`)?.value;
+                
+                const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : '';
+                
+                const certificationElement = document.createElement('div');
+                certificationElement.className = 'mb-4';
+                
+                let nameHtml = `<h4 class="font-semibold">${name}</h4>`;
+                if (url) {
+                    nameHtml = `<h4 class="font-semibold"><a href="${url}" target="_blank" class="text-blue-600 hover:underline">${name} <i class="fas fa-external-link-alt text-xs"></i></a></h4>`;
+                }
+                
+                certificationElement.innerHTML = `
+                    ${nameHtml}
+                    <div class="text-gray-700">${issuer}${formattedDate ? ` | ${formattedDate}` : ''}</div>
+                `;
+                
+                previewContainer.appendChild(certificationElement);
+            });
+        }
+
+        // Add Language
+        document.getElementById('add-language').addEventListener('click', () => {
+            const languagesContainer = document.getElementById('languages-container');
+            const index = languagesContainer.children.length;
+            
+            const languageEntry = document.createElement('div');
+            languageEntry.className = 'language-entry flex items-center gap-2 p-4 bg-gray-50 rounded-lg fade-in';
+            languageEntry.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                    <div>
+                        <label for="language-name-${index}" class="block text-sm font-medium text-gray-700">Language*</label>
+                        <input type="text" id="language-name-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                    </div>
+                    <div>
+                        <label for="language-proficiency-${index}" class="block text-sm font-medium text-gray-700">Proficiency*</label>
+                        <select id="language-proficiency-${index}" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2 border">
+                            <option value="elementary">Elementary</option>
+                            <option value="limited-working">Limited Working</option>
+                            <option value="professional-working">Professional Working</option>
+                            <option value="full-professional">Full Professional</option>
+                            <option value="native-bilingual">Native/Bilingual</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="remove-language text-red-500 hover:text-red-700 p-2">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            languagesContainer.appendChild(languageEntry);
+            
+            // Add event listeners for this language entry
+            languageEntry.querySelector('input').addEventListener('input', updateLanguagesPreview);
+            languageEntry.querySelector('select').addEventListener('change', updateLanguagesPreview);
+            
+            // Add remove functionality
+            languageEntry.querySelector('.remove-language').addEventListener('click', () => {
+                languageEntry.classList.add('fade-out');
+                setTimeout(() => {
+                    languagesContainer.removeChild(languageEntry);
+                    updateLanguagesPreview();
+                }, 300);
+            });
+            
+            // Show languages section in preview
+            document.getElementById('preview-languages').classList.remove('hidden');
+        });
+
+        function updateLanguagesPreview() {
+            const previewContainer = document.getElementById('preview-languages-list');
+            previewContainer.innerHTML = '';
+            
+            const entries = document.querySelectorAll('.language-entry');
+            if (entries.length === 0) {
+                document.getElementById('preview-languages').classList.add('hidden');
+                return;
+            }
+            
+            entries.forEach(entry => {
+                const index = entry.id.split('-')[1] || Array.from(entry.parentNode.children).indexOf(entry);
+                const language = entry.querySelector(`#language-name-${index}`)?.value;
+                const proficiency = entry.querySelector(`#language-proficiency-${index}`)?.value;
+                
+                if (language) {
+                    const proficiencyText = {
+                        'elementary': 'Elementary',
+                        'limited-working': 'Limited Working',
+                        'professional-working': 'Professional',
+                        'full-professional': 'Full Professional',
+                        'native-bilingual': 'Native/Bilingual'
+                    }[proficiency] || '';
+                    
+                    const languageElement = document.createElement('div');
+                    languageElement.className = 'bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm whitespace-nowrap skill-tag';
+                    languageElement.textContent = `${language}${proficiencyText ? ` (${proficiencyText})` : ''}`;
+                    
+                    previewContainer.appendChild(languageElement);
+                }
+            });
+        }
+
+        // Preview Toggle
+        document.getElementById('preview-resume').addEventListener('click', () => {
+            // Copy the preview content to the fullscreen modal
+            const fullscreenContent = document.getElementById('fullscreen-preview-content');
+            fullscreenContent.innerHTML = document.getElementById('resume-preview').innerHTML;
+            
+            // Show the modal
+            fullscreenPreview.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closePreview.addEventListener('click', () => {
+            fullscreenPreview.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Download PDF with improved quality
+        downloadResume.addEventListener('click', async () => {
+            // Create a clone of the resume preview to avoid affecting the displayed version
+            const element = document.getElementById('resume-preview');
+            const clone = element.cloneNode(true);
+            
+            // Apply PDF-specific styles
+            clone.style.width = '210mm';
+            clone.style.padding = '20mm';
+            clone.style.fontSize = '12pt';
+            clone.style.lineHeight = '1.5';
+            
+            // Fix skill boxes for PDF
+            const skillBoxes = clone.querySelectorAll('#preview-skills-list > div, #preview-languages-list > div');
+            skillBoxes.forEach(box => {
+                box.style.whiteSpace = 'nowrap';
+                box.style.display = 'inline-block';
+                box.style.margin = '2px';
+                box.style.padding = '3px 8px';
+            });
+            
+            document.body.appendChild(clone);
+            
+            try {
+                // Use html2canvas with improved settings for better quality
+                const canvas = await html2canvas(clone, {
+                    scale: 3, // Higher scale for better quality
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true,
+                    letterRendering: true,
+                    quality: 1 // Highest quality
+                });
+                
+                // Create PDF
+                const imgData = canvas.toDataURL('image/png', 1.0);
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                // Add additional pages if needed
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // Download the PDF
+                pdf.save('resume.pdf');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            } finally {
+                // Remove the clone
+                document.body.removeChild(clone);
+            }
+        });
+
+        // Reset Form
+        resetForm.addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset the form? All data will be lost.')) {
+                resumeForm.reset();
+                
+                // Clear all dynamic sections
+                document.getElementById('education-container').innerHTML = '';
+                document.getElementById('experience-container').innerHTML = '';
+                document.getElementById('skills-container').innerHTML = '';
+                document.getElementById('projects-container').innerHTML = '';
+                document.getElementById('certifications-container').innerHTML = '';
+                document.getElementById('languages-container').innerHTML = '';
+                
+                // Reset preview
+                document.getElementById('preview-name').textContent = 'Your Name';
+                document.getElementById('preview-title').textContent = 'Professional Title';
+                document.getElementById('preview-phone').innerHTML = '<i class="fas fa-phone mr-1"></i>Phone';
+                document.getElementById('preview-email').innerHTML = '<i class="fas fa-envelope mr-1"></i>Email';
+                document.getElementById('preview-email').classList.add('hidden');
+                document.getElementById('preview-address').innerHTML = '<i class="fas fa-map-marker-alt mr-1"></i>Address';
+                document.getElementById('preview-address').classList.add('hidden');
+                document.getElementById('preview-linkedin').innerHTML = '<i class="fab fa-linkedin mr-1"></i>LinkedIn';
+                document.getElementById('preview-linkedin').classList.add('hidden');
+                document.getElementById('preview-portfolio').innerHTML = '<i class="fas fa-globe mr-1"></i>Portfolio';
+                document.getElementById('preview-portfolio').classList.add('hidden');
+                
+                // Hide all sections in preview
+                document.getElementById('preview-summary').classList.add('hidden');
+                document.getElementById('preview-education').classList.add('hidden');
+                document.getElementById('preview-experience').classList.add('hidden');
+                document.getElementById('preview-skills').classList.add('hidden');
+                document.getElementById('preview-projects').classList.add('hidden');
+                document.getElementById('preview-certifications').classList.add('hidden');
+                document.getElementById('preview-languages').classList.add('hidden');
+            }
+        });
+
+        // Form Validation
+        resumeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Check required fields
+            const requiredFields = resumeForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+            
+            if (isValid) {
+                alert('Resume saved successfully!');
+                // In a real app, you would save the data to a database or localStorage
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Remove error class when user starts typing in a required field
+        document.querySelectorAll('[required]').forEach(field => {
+            field.addEventListener('input', () => {
+                if (field.value.trim()) {
+                    field.classList.remove('border-red-500');
+                }
+            });
+        });
+
+        // Initialize with one empty skill for better UX
+        document.getElementById('add-skill').click();
+
+
+        // FAQ functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+      const icon = question.querySelector('i');
+      
+      // Toggle answer visibility
+      answer.classList.toggle('hidden');
+      
+      // Rotate icon
+      icon.classList.toggle('rotate-180');
+    });
+  });
+});
+
+    </script>
+</body>
+</html>
